@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { searchTextSelector } from '@/redux/characterSlice'
 import { useRouter } from 'next/navigation'
 import SimpleBackdrop from '@/components/Backdrop'
+import BasicModal from '@/components/BasicModal'
 
 interface GetCharactersQueryWithInfo extends GetCharactersQuery {
   info: {
@@ -67,6 +68,7 @@ const page = () => {
     >
       <SearchBar />
 
+      {/* Main Body */}
       <div
         style={{
           display: 'grid',
@@ -90,6 +92,8 @@ const page = () => {
         page={currentPage}
         handleChange={handlePaginationChange}
       />
+
+      <BasicModal />
     </Box>
   )
 }

@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 import { SignOutButton } from '@clerk/nextjs';
 
-const pages = [{ label: 'Doc', link: 'https://rickandmortyapi.com/documentation' }];
+const pages = [{ label: 'Docs', link: 'https://rickandmortyapi.com/documentation' }];
 interface ResponsiveAppBarProps {
   name?: string;
   profileImgUrl?: string
