@@ -203,17 +203,18 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']['input']>;
 };
 
-export type FetchCharactersQueryVariables = Exact<{
+export type GetCharactersQueryVariables = Exact<{
+  name: Scalars['String']['input'];
   page: Scalars['Int']['input'];
 }>;
 
 
-export type FetchCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, type?: string | null, gender?: string | null, image?: string | null, created?: string | null, origin?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, location?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, episode: Array<{ __typename?: 'Episode', id?: string | null } | null> } | null> | null } | null };
+export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, type?: string | null, gender?: string | null, image?: string | null, created?: string | null, origin?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, location?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, episode: Array<{ __typename?: 'Episode', id?: string | null } | null> } | null> | null } | null };
 
 
-export const FetchCharactersDocument = gql`
-    query FetchCharacters($page: Int!) {
-  characters(page: $page) {
+export const GetCharactersDocument = gql`
+    query GetCharacters($name: String!, $page: Int!) {
+  characters(page: $page, filter: {name: $name}) {
     info {
       count
       pages
@@ -244,8 +245,8 @@ export const FetchCharactersDocument = gql`
 }
     `;
 
-export function useFetchCharactersQuery(options: Omit<Urql.UseQueryArgs<FetchCharactersQueryVariables>, 'query'>) {
-  return Urql.useQuery<FetchCharactersQuery, FetchCharactersQueryVariables>({ query: FetchCharactersDocument, ...options });
+export function useGetCharactersQuery(options: Omit<Urql.UseQueryArgs<GetCharactersQueryVariables>, 'query'>) {
+  return Urql.useQuery<GetCharactersQuery, GetCharactersQueryVariables>({ query: GetCharactersDocument, ...options });
 };
 import { IntrospectionQuery } from 'graphql';
 export default {

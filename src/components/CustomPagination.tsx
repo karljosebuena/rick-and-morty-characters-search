@@ -9,8 +9,6 @@ interface PaginationOutlinedProps {
 }
 
 export default function PaginationOutlined({ count, page, handleChange }: PaginationOutlinedProps) {
-  console.log('PaginationOutlined', page, count);
-
   return (
     <Stack spacing={2}>
       <Pagination

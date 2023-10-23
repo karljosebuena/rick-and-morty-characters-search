@@ -3,13 +3,16 @@
 import CustomPagination from '@/components/CustomPagination'
 import MediaCard from '@/components/MediaCard'
 import SearchBar from '@/components/SearchBar'
-import { Character, FetchCharactersQuery, useFetchCharactersQuery } from '@/generated/graphql'
+import { Character, GetCharactersQuery, useGetCharactersQuery } from '@/generated/graphql'
 import { Box } from '@mui/material'
 import { useSearchParams } from 'next/navigation'
-import React, { use, useCallback, useEffect, useMemo, useState } from 'react'
-import { useQuery } from 'urql'
+import React, { useState } from 'react'
+import { useSelector } from "react-redux";
+import { searchTextSelector } from '@/redux/characterSlice'
+import { useRouter } from 'next/navigation'
+import SimpleBackdrop from '@/components/Backdrop'
 
-interface FetchCharactersQueryWithInfo extends FetchCharactersQuery {
+interface GetCharactersQueryWithInfo extends GetCharactersQuery {
   info: {
     count: number;
     pages: number;
@@ -19,40 +22,36 @@ interface FetchCharactersQueryWithInfo extends FetchCharactersQuery {
 }
 
 const page = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const pageParam = useMemo(() => {
-    return parseInt(searchParams.get('page') ?? '1', 10);
-  }, [searchParams]);
+  const page = parseInt(searchParams.get('page') ?? '1', 10);
+  const [currentPage, setCurrentPage] = useState(page);
 
-  const [currentPage, setCurrentPage] = useState(pageParam);
-  const [pageCount, setPageCount] = useState(0);
+  // TODO: Fix problem with search when result is 1 page only and current page is > 1
+  const searchText = useSelector(searchTextSelector);
+  if (searchText) {
+    router.push(`dashboard?page=${1}`, undefined);
+  }
 
-  const [result] = useFetchCharactersQuery(
-    {
-      variables: {
-        page: currentPage,
-      },
+  const [result] = useGetCharactersQuery({
+    variables: {
+      page: currentPage,
+      name: searchText
     }
-  );
+  });
   const { data, fetching, error } = result as unknown as {
-    data: FetchCharactersQueryWithInfo;
+    data: GetCharactersQueryWithInfo;
     fetching: boolean;
     error: any;
   };
 
-  console.log('data', data);
+  const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    router.push(`dashboard?page=${value}`, undefined);
+    setCurrentPage(value);
+  }
 
-  const pages = useMemo(() => {
-    return data?.characters?.info?.pages ?? 1;
-  }, [data?.characters?.info?.pages]);
-
-  useEffect(() => {
-    setPageCount(pages ?? 1);
-  }, [pages]);
-
-
-  if (fetching) return <div>Loading...</div>;
-  if (error) return <div>Oh no... {(error as Error).message}</div>;
+  if (fetching) return <SimpleBackdrop open={fetching} />
+  if (error) return <div style={{ padding: '2rem 1rem' }}>Oh no... {(error as Error).message}</div>;
 
   return (
     <Box
@@ -87,11 +86,9 @@ const page = () => {
       </div>
 
       <CustomPagination
-        count={pageCount}
+        count={data?.characters?.info?.pages ?? 1}
         page={currentPage}
-        handleChange={(event, value) => {
-          setCurrentPage(value);
-        }}
+        handleChange={handlePaginationChange}
       />
     </Box>
   )

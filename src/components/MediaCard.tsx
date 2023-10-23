@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Character } from '@/generated/graphql';
 import { NoBackpackSharp } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
+import Image from 'next/image';
 
 interface MediaCardProps {
   character: Character;
@@ -29,7 +30,7 @@ export default function MediaCard({ character }: MediaCardProps) {
       <CardMedia
         sx={{ height: 300 }}
         image={character.image ?? 'https://via.placeholder.com/150'}
-        title="green iguana"
+        title={character.name?.toString()}
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div"
