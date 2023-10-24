@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://files.cults3d.com/uploaders/14307074/illustration-file/3c12b15c-003f-409f-a9b6-b0dcde4495d8/render0001.png" alt="Project logo"></a>
+ <img width=200px height=200px src="public/images/render0001.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">rick-and-morty-characters-search</h3>
