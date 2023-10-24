@@ -5,38 +5,26 @@
 
 <h3 align="center">rick-and-morty-characters-search</h3>
 
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://
-
-github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
-
 ---
-
-<p align="center"> Few lines describing your project.
-    <br>
-</p>
 
 ## 📝 Table of Contents
 
 - [About](#about)
+- [Demo](#demo)
 - [Getting Started](#getting_started)
+- [Running the tests](#tests)
 - [Deployment](#deployment)
-- [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
+- [TODO](#todo)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
-Rick and Morty character search web application backed by the official Rick and Morty graphql endpoint (https://rickandmortyapi.com/graphql). The application allows users to explore a comprehensive list of characters from the Rick and Morty series. Each character is presented in a user-friendly format, displaying their essential details such as name, species, origin, location, and status. The application has been built using Nextjs + TypeScript, ensuring a robust and type-safe codebase. Additionally, I have utilized Yarn as the package manager and Material-UI (MUI) for creating a responsive and visually appealing user interface. To enhance the application's state management, I have incorporated Redux, a popular state management library in the React ecosystem. This choice ensures efficient handling of state changes, providing a seamless user experience.For authentication I've used clerk. And lastly, I've integrated openAPI to generate character information wich is not available in the official Rick and Morty graphql endpoint.
+Rick and Morty character search web application backed by the official Rick and Morty graphql endpoint [Rick and Morty GraphQL Endpoint](https://rickandmortyapi.com/graphql). The application allows users to explore a comprehensive list of characters from the Rick and Morty series. Each character is presented in a user-friendly format, displaying their essential details such as name, species, origin, location, and status. The application has been built using Nextjs + TypeScript, ensuring a robust and type-safe codebase. Additionally, I have utilized Yarn as the package manager and Material-UI (MUI) for creating a responsive and visually appealing user interface. To enhance the application's state management, I have incorporated Redux, a popular state management library in the React ecosystem. This choice ensures efficient handling of state changes, providing a seamless user experience.For authentication I've used clerk. And lastly, I've integrated openAPI to generate character information wich is not available in the official Rick and Morty GraphQL endpoint.
+
+## 🌟 Demo <a name = "about"></a>
+
+[Rick and Morty Characters Search](https://rick-and-morty-characters-search.vercel.app/) - Live App in Vercel
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -50,9 +38,34 @@ What things you need to install the software and how to install them.
 Sigup and create account on these to get APIs needed to run the app:
 1. https://clerk.com/
 2. https://openai.com/
+You will need to create secret keys from these apps and store in the .env file.
+```
 
-Use these env template and just update the missing keys with the values you will get from above accouts:
+### Installing
 
+A step by step series of examples that tell you how to get a development env running.
+
+Clone the app
+
+```
+git clone git@github.com:karljosebuena/rick-and-morty-characters-search.git
+```
+
+Go to app folder
+
+```
+cd rick-and-morty-characters-search
+```
+
+Install dependencies
+
+```
+yarn install
+```
+
+Created .env file in the root folder. Use this template
+
+```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<GET_ME_FROM_CLERK>
 CLERK_SECRET_KEY=<GET_ME_FROM_CLERK>
 OPENAI_API_KEY=<GET_ME_FROM_OPENAI>
@@ -63,67 +76,65 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 GRAPHQL_URL=https://rickandmortyapi.com/graphql/
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+Run the app
 
 ```
-Give the example
+yarn dev
 ```
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
+You should now be able to see the application running at http://localhost:3000
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Explain how to run the automated tests for this system.
+The app is configured with jest for creating tests. It already has a sample test. But need to add more to cover all pages/components and apis.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
+To run test
 
 ```
-Give an example
+yarn test
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
+There are many options you can go for deploying this, I went with vercel.
+To deploy simply upload your codebase to github then:
+
+1. Signup/Signino to vercel.
+2. Add new Project.
+3. Import repo name in this case 'rick-and-morty-characters-search'.
+4. Goto Environment Variables section, then copy paste everything from .env file.
+5. Click deploy.
+6. While waiting for the deployment to finish, go to the project Settings.
+7. From the sidebar click Functions.
+8. Change the Function Region to what's nearest to you. In my case it's sin1. Click Save.
+9. Once deployment is done you can click the 'Visit' button to launch the app.
+
+For more details on deploying github project to vercel, check it here [Github-Vercel Deployment Guide](https://vercel.com/docs/deployments/git#deploying-a-git-repository)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
+- [Typescript](https://www.typescriptlang.org/) - Type safe coding
+- [Rick and Morty GraphQL Endpoint](https://rickandmortyapi.com/graphql) - GraphQL Endpoint
+- [Clerk](https://clerk.com/) - Authentication
+- [OpenAI](https://openai.com/) - Backend (Prompt Engineering)
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [ReactJs](https://react.dev/) - Frontend
+- [NextJs](https://nextjs.org//) - React Framework
+- [MUI](https://mui.com/) - React Component Library
+- [Redux](https://react-redux.js.org/) - React State Management
+- [React Query](https://tanstack.com/query/v4/docs/react/overview) - React Data synchronization Library
+- [URQL](https://formidable.com/open-source/urql/docs/basics/react-preact/) - GraphQL Client
+- [Jest](https://jestjs.io/) - JS Testing Framework
+- [Vercel](https://vercel.com/) - App Hosting
 
-## ✍️ Authors <a name = "authors"></a>
+## 🖊️ Todo <a name = "todo"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+1. Fix problem with search when result is 1 page only and current page is > 1
+2. Add more tests
+3. Apply SSR (Server Side Rendering)
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+For more details on deploying github project to vercel, check it here [Github-Vercel Deployment Guide](https://vercel.com/docs/deployments/git#deploying-a-git-repository)
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+## 👨 Author <a name = "authors"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [@karljosebuena](https://github.com/karljosebuena)

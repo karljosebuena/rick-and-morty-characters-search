@@ -34,7 +34,6 @@ const CustomDashboard = () => {
   const searchText = useSelector(searchTextSelector);
   useEffect(() => {
     if (searchText) {
-      console.log('keep caling me?')
       router.push(`dashboard?page=${1}`, undefined);
     }
   }, [router, searchText])
