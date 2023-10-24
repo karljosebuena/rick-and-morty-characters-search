@@ -1,45 +1,129 @@
-# Material UI - Next.js App Router example in TypeScript
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+</p>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Material UI installed.
+<h3 align="center">rick-and-morty-characters-search</h3>
 
-## How to use
+<div align="center">
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://
 
-<!-- #default-branch-switch -->
+github.com/kylelobo/The-Documentation-Compendium/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-```bash
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/material-ui-nextjs-ts
-cd material-ui-nextjs-ts
+</div>
+
+---
+
+<p align="center"> Few lines describing your project.
+    <br>
+</p>
+
+## 📝 Table of Contents
+
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [TODO](../TODO.md)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+## 🧐 About <a name = "about"></a>
+
+Rick and Morty character search web application backed by the official Rick and Morty graphql endpoint (https://rickandmortyapi.com/graphql). The application allows users to explore a comprehensive list of characters from the Rick and Morty series. Each character is presented in a user-friendly format, displaying their essential details such as name, species, origin, location, and status. The application has been built using Nextjs + TypeScript, ensuring a robust and type-safe codebase. Additionally, I have utilized Yarn as the package manager and Material-UI (MUI) for creating a responsive and visually appealing user interface. To enhance the application's state management, I have incorporated Redux, a popular state management library in the React ecosystem. This choice ensures efficient handling of state changes, providing a seamless user experience.For authentication I've used clerk. And lastly, I've integrated openAPI to generate character information wich is not available in the official Rick and Morty graphql endpoint.
+
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them.
+
+```
+Sigup and create account on these to get APIs needed to run the app:
+1. https://clerk.com/
+2. https://openai.com/
+
+Use these env template and just update the missing keys with the values you will get from above accouts:
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<GET_ME_FROM_CLERK>
+CLERK_SECRET_KEY=<GET_ME_FROM_CLERK>
+OPENAI_API_KEY=<GET_ME_FROM_OPENAI>
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+GRAPHQL_URL=https://rickandmortyapi.com/graphql/
 ```
 
-Install it and run:
+### Installing
 
-```bash
-npm install
-npm run dev
+A step by step series of examples that tell you how to get a development env running.
+
+Say what the step will be
+
+```
+Give the example
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+And repeat
 
-or:
+```
+until finished
+```
 
-<!-- #default-branch-switch -->
+End with an example of getting some data out of the system or using it for a little demo.
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/material-ui-nextjs-ts)
+## 🔧 Running the tests <a name = "tests"></a>
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/material-ui-nextjs-ts)
+Explain how to run the automated tests for this system.
 
-## Learn more
+### Break down into end to end tests
 
-To learn more about this example:
+Explain what these tests test and why
 
-- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Customizing Material UI](https://mui.com/material-ui/customization/how-to-customize/) - approaches to customizing Material UI.
+```
+Give an example
+```
 
-## What's next?
+### And coding style tests
 
-<!-- #default-branch-switch -->
+Explain what these tests test and why
 
-You now have a working example project.
-You can head back to the documentation and continue by browsing the [templates](https://mui.com/material-ui/getting-started/templates/) section.
+```
+Give an example
+```
+
+## 🎈 Usage <a name="usage"></a>
+
+Add notes about how to use the system.
+
+## 🚀 Deployment <a name = "deployment"></a>
+
+Add additional notes about how to deploy this on a live system.
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Express](https://expressjs.com/) - Server Framework
+- [VueJs](https://vuejs.org/) - Web Framework
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+
+See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- References
