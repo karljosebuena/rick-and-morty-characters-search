@@ -2,7 +2,7 @@
 
 import { Box } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
@@ -32,9 +32,12 @@ const CustomDashboard = () => {
 
   // TODO: Fix problem with search when result is 1 page only and current page is > 1
   const searchText = useSelector(searchTextSelector);
-  if (searchText) {
-    router.push(`dashboard?page=${1}`, undefined);
-  }
+  useEffect(() => {
+    if (searchText) {
+      console.log('keep caling me?')
+      router.push(`dashboard?page=${1}`, undefined);
+    }
+  }, [router, searchText])
 
   const [result] = useGetCharactersQuery({
     variables: {
