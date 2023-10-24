@@ -22,7 +22,7 @@
 
 Rick and Morty character search web application backed by the official Rick and Morty graphql endpoint [Rick and Morty GraphQL Endpoint](https://rickandmortyapi.com/graphql). The application allows users to explore a comprehensive list of characters from the Rick and Morty series. Each character is presented in a user-friendly format, displaying their essential details such as name, species, origin, location, and status. The application has been built using Nextjs + TypeScript, ensuring a robust and type-safe codebase. Additionally, I have utilized Yarn as the package manager and Material-UI (MUI) for creating a responsive and visually appealing user interface. To enhance the application's state management, I have incorporated Redux, a popular state management library in the React ecosystem. This choice ensures efficient handling of state changes, providing a seamless user experience.For authentication I've used clerk. And lastly, I've integrated openAPI to generate character information wich is not available in the official Rick and Morty GraphQL endpoint.
 
-## 🌟 Demo <a name = "about"></a>
+## 🌟 Demo <a name = "demo"></a>
 
 [Rick and Morty Characters Search](https://rick-and-morty-characters-search.vercel.app/) - Live App in Vercel
 
