@@ -4,7 +4,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { characterDataSelector, generatedCharacterInfoSelector, generatingInfoFromOpenAiSelector, setGeneratingInfoFromOpenAi } from '@/redux/characterSlice';
+import {
+  characterDataSelector,
+  generatedCharacterInfoSelector,
+  generatingInfoFromOpenAiSelector,
+  setGeneratingInfoFromOpenAi
+} from '@/redux/characterSlice';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -17,8 +22,7 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  textAlign: 'justify' as 'justify',
-
+  textAlign: 'justify' as 'justify'
 };
 
 interface BasicModalProps {

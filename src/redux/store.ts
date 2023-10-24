@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import { characterSlice } from "./characterSlice";
+import { characterSlice } from './characterSlice';
 
 export const store = configureStore({
   reducer: {
-    [characterSlice.name]: characterSlice.reducer,
+    [characterSlice.name]: characterSlice.reducer
   },
-  devTools: true,
+  devTools: true
 });

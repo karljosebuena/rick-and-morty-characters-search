@@ -1,9 +1,7 @@
-import CustomDashboard from '@/components/CustomDashboard'
+import CustomDashboard from '@/components/CustomDashboard';
 
 const page = () => {
-  return (
-    <CustomDashboard />
-  )
-}
+  return <CustomDashboard />;
+};
 
-export default page
+export default page;

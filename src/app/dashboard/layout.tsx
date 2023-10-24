@@ -6,11 +6,11 @@ import { clerk } from '@/lib/clerk-server ';
 
 export const metadata = {
   title: 'Rick and Morty Characters Search App',
-  description: 'Rick and Morty Characters Search App built with Next.js + Material UI v5',
+  description: 'Rick and Morty Characters Search App built with Next.js + Material UI v5'
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { userId, } = auth();
+  const { userId } = auth();
   const user = await clerk.users.getUser(userId as string);
 
   return (

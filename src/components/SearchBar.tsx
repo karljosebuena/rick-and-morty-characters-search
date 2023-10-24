@@ -1,19 +1,19 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { searchTextSelector, setSearchPage, setSearchText } from '@/redux/characterSlice';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [searchTimeout, setSearchTimeout] = React.useState<NodeJS.Timeout>();
-
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | undefined>();
   const searchText = useSelector(searchTextSelector);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    clearTimeout(searchTimeout);
+    clearTimeout(searchTimeout!);
     // debounce method
     setSearchTimeout(
       setTimeout(() => {
@@ -29,16 +29,10 @@ const SearchBar = () => {
         display: 'flex',
         justifyContent: 'center',
         p: 2,
-        width: '100%',
+        width: '100%'
       }}
     >
-      <TextField
-        variant="filled"
-        label="Search character(s)"
-        fullWidth
-        onChange={handleSearchChange}
-        defaultValue={searchText}
-      />
+      <TextField variant="filled" label="Search character(s)" fullWidth onChange={handleSearchChange} defaultValue={searchText} />
     </Box>
   );
 };

@@ -10,12 +10,12 @@ export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' |
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  Upload: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  Upload: { input: any; output: any };
 };
 
 export enum CacheControlScope {
@@ -155,49 +155,40 @@ export type Query = {
   locationsByIds?: Maybe<Array<Maybe<Location>>>;
 };
 
-
 export type QueryCharacterArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCharactersArgs = {
   filter?: InputMaybe<FilterCharacter>;
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryCharactersByIdsArgs = {
   ids: Array<Scalars['ID']['input']>;
 };
 
-
 export type QueryEpisodeArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryEpisodesArgs = {
   filter?: InputMaybe<FilterEpisode>;
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryEpisodesByIdsArgs = {
   ids: Array<Scalars['ID']['input']>;
 };
-
 
 export type QueryLocationArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QueryLocationsArgs = {
   filter?: InputMaybe<FilterLocation>;
   page?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']['input']>;
@@ -208,476 +199,493 @@ export type GetCharactersQueryVariables = Exact<{
   page: Scalars['Int']['input'];
 }>;
 
-
-export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, type?: string | null, gender?: string | null, image?: string | null, created?: string | null, origin?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, location?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, episode: Array<{ __typename?: 'Episode', id?: string | null } | null> } | null> | null } | null };
-
+export type GetCharactersQuery = {
+  __typename?: 'Query';
+  characters?: {
+    __typename?: 'Characters';
+    info?: { __typename?: 'Info'; count?: number | null; pages?: number | null; next?: number | null; prev?: number | null } | null;
+    results?: Array<{
+      __typename?: 'Character';
+      name?: string | null;
+      status?: string | null;
+      species?: string | null;
+      type?: string | null;
+      gender?: string | null;
+      image?: string | null;
+      created?: string | null;
+      origin?: { __typename?: 'Location'; id?: string | null; name?: string | null } | null;
+      location?: { __typename?: 'Location'; id?: string | null; name?: string | null } | null;
+      episode: Array<{ __typename?: 'Episode'; id?: string | null } | null>;
+    } | null> | null;
+  } | null;
+};
 
 export const GetCharactersDocument = gql`
-    query GetCharacters($name: String!, $page: Int!) {
-  characters(page: $page, filter: {name: $name}) {
-    info {
-      count
-      pages
-      next
-      prev
-    }
-    results {
-      name
-      status
-      species
-      type
-      gender
-      origin {
-        id
+  query GetCharacters($name: String!, $page: Int!) {
+    characters(page: $page, filter: { name: $name }) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
         name
+        status
+        species
+        type
+        gender
+        origin {
+          id
+          name
+        }
+        location {
+          id
+          name
+        }
+        image
+        episode {
+          id
+        }
+        created
       }
-      location {
-        id
-        name
-      }
-      image
-      episode {
-        id
-      }
-      created
     }
   }
-}
-    `;
+`;
 
 export function useGetCharactersQuery(options: Omit<Urql.UseQueryArgs<GetCharactersQueryVariables>, 'query'>) {
   return Urql.useQuery<GetCharactersQuery, GetCharactersQueryVariables>({ query: GetCharactersDocument, ...options });
-};
+}
 import { IntrospectionQuery } from 'graphql';
 export default {
-  "__schema": {
-    "queryType": {
-      "name": "Query"
+  __schema: {
+    queryType: {
+      name: 'Query'
     },
-    "mutationType": null,
-    "subscriptionType": null,
-    "types": [
+    mutationType: null,
+    subscriptionType: null,
+    types: [
       {
-        "kind": "OBJECT",
-        "name": "Character",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Character',
+        fields: [
           {
-            "name": "created",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'created',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "episode",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "LIST",
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Episode",
-                  "ofType": null
+            name: 'episode',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Episode',
+                  ofType: null
                 }
               }
             },
-            "args": []
+            args: []
           },
           {
-            "name": "gender",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'gender',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "id",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'id',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "image",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'image',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "location",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Location",
-              "ofType": null
+            name: 'location',
+            type: {
+              kind: 'OBJECT',
+              name: 'Location',
+              ofType: null
             },
-            "args": []
+            args: []
           },
           {
-            "name": "name",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'name',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "origin",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Location",
-              "ofType": null
+            name: 'origin',
+            type: {
+              kind: 'OBJECT',
+              name: 'Location',
+              ofType: null
             },
-            "args": []
+            args: []
           },
           {
-            "name": "species",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'species',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "status",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'status',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "type",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'type',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Characters",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Characters',
+        fields: [
           {
-            "name": "info",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Info",
-              "ofType": null
+            name: 'info',
+            type: {
+              kind: 'OBJECT',
+              name: 'Info',
+              ofType: null
             },
-            "args": []
+            args: []
           },
           {
-            "name": "results",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Character",
-                "ofType": null
+            name: 'results',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Character',
+                ofType: null
               }
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Episode",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Episode',
+        fields: [
           {
-            "name": "air_date",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'air_date',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "characters",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "LIST",
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Character",
-                  "ofType": null
+            name: 'characters',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Character',
+                  ofType: null
                 }
               }
             },
-            "args": []
+            args: []
           },
           {
-            "name": "created",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'created',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "episode",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'episode',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "id",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'id',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "name",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'name',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Episodes",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Episodes',
+        fields: [
           {
-            "name": "info",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Info",
-              "ofType": null
+            name: 'info',
+            type: {
+              kind: 'OBJECT',
+              name: 'Info',
+              ofType: null
             },
-            "args": []
+            args: []
           },
           {
-            "name": "results",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Episode",
-                "ofType": null
+            name: 'results',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Episode',
+                ofType: null
               }
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Info",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Info',
+        fields: [
           {
-            "name": "count",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'count',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "next",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'next',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "pages",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'pages',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "prev",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'prev',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Location",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Location',
+        fields: [
           {
-            "name": "created",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'created',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "dimension",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'dimension',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "id",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'id',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "name",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'name',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           },
           {
-            "name": "residents",
-            "type": {
-              "kind": "NON_NULL",
-              "ofType": {
-                "kind": "LIST",
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Character",
-                  "ofType": null
+            name: 'residents',
+            type: {
+              kind: 'NON_NULL',
+              ofType: {
+                kind: 'LIST',
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Character',
+                  ofType: null
                 }
               }
             },
-            "args": []
+            args: []
           },
           {
-            "name": "type",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Any"
+            name: 'type',
+            type: {
+              kind: 'SCALAR',
+              name: 'Any'
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Locations",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Locations',
+        fields: [
           {
-            "name": "info",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Info",
-              "ofType": null
+            name: 'info',
+            type: {
+              kind: 'OBJECT',
+              name: 'Info',
+              ofType: null
             },
-            "args": []
+            args: []
           },
           {
-            "name": "results",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Location",
-                "ofType": null
+            name: 'results',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Location',
+                ofType: null
               }
             },
-            "args": []
+            args: []
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "OBJECT",
-        "name": "Query",
-        "fields": [
+        kind: 'OBJECT',
+        name: 'Query',
+        fields: [
           {
-            "name": "character",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Character",
-              "ofType": null
+            name: 'character',
+            type: {
+              kind: 'OBJECT',
+              name: 'Character',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "id",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Any"
+                name: 'id',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any'
                   }
                 }
               }
             ]
           },
           {
-            "name": "characters",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Characters",
-              "ofType": null
+            name: 'characters',
+            type: {
+              kind: 'OBJECT',
+              name: 'Characters',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "filter",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'filter',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               },
               {
-                "name": "page",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'page',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               }
             ]
           },
           {
-            "name": "charactersByIds",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Character",
-                "ofType": null
+            name: 'charactersByIds',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Character',
+                ofType: null
               }
             },
-            "args": [
+            args: [
               {
-                "name": "ids",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "LIST",
-                    "ofType": {
-                      "kind": "NON_NULL",
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "Any"
+                name: 'ids',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'LIST',
+                    ofType: {
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any'
                       }
                     }
                   }
@@ -686,71 +694,71 @@ export default {
             ]
           },
           {
-            "name": "episode",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Episode",
-              "ofType": null
+            name: 'episode',
+            type: {
+              kind: 'OBJECT',
+              name: 'Episode',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "id",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Any"
+                name: 'id',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any'
                   }
                 }
               }
             ]
           },
           {
-            "name": "episodes",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Episodes",
-              "ofType": null
+            name: 'episodes',
+            type: {
+              kind: 'OBJECT',
+              name: 'Episodes',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "filter",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'filter',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               },
               {
-                "name": "page",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'page',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               }
             ]
           },
           {
-            "name": "episodesByIds",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Episode",
-                "ofType": null
+            name: 'episodesByIds',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Episode',
+                ofType: null
               }
             },
-            "args": [
+            args: [
               {
-                "name": "ids",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "LIST",
-                    "ofType": {
-                      "kind": "NON_NULL",
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "Any"
+                name: 'ids',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'LIST',
+                    ofType: {
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any'
                       }
                     }
                   }
@@ -759,71 +767,71 @@ export default {
             ]
           },
           {
-            "name": "location",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Location",
-              "ofType": null
+            name: 'location',
+            type: {
+              kind: 'OBJECT',
+              name: 'Location',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "id",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Any"
+                name: 'id',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'Any'
                   }
                 }
               }
             ]
           },
           {
-            "name": "locations",
-            "type": {
-              "kind": "OBJECT",
-              "name": "Locations",
-              "ofType": null
+            name: 'locations',
+            type: {
+              kind: 'OBJECT',
+              name: 'Locations',
+              ofType: null
             },
-            "args": [
+            args: [
               {
-                "name": "filter",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'filter',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               },
               {
-                "name": "page",
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Any"
+                name: 'page',
+                type: {
+                  kind: 'SCALAR',
+                  name: 'Any'
                 }
               }
             ]
           },
           {
-            "name": "locationsByIds",
-            "type": {
-              "kind": "LIST",
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Location",
-                "ofType": null
+            name: 'locationsByIds',
+            type: {
+              kind: 'LIST',
+              ofType: {
+                kind: 'OBJECT',
+                name: 'Location',
+                ofType: null
               }
             },
-            "args": [
+            args: [
               {
-                "name": "ids",
-                "type": {
-                  "kind": "NON_NULL",
-                  "ofType": {
-                    "kind": "LIST",
-                    "ofType": {
-                      "kind": "NON_NULL",
-                      "ofType": {
-                        "kind": "SCALAR",
-                        "name": "Any"
+                name: 'ids',
+                type: {
+                  kind: 'NON_NULL',
+                  ofType: {
+                    kind: 'LIST',
+                    ofType: {
+                      kind: 'NON_NULL',
+                      ofType: {
+                        kind: 'SCALAR',
+                        name: 'Any'
                       }
                     }
                   }
@@ -832,13 +840,13 @@ export default {
             ]
           }
         ],
-        "interfaces": []
+        interfaces: []
       },
       {
-        "kind": "SCALAR",
-        "name": "Any"
+        kind: 'SCALAR',
+        name: 'Any'
       }
     ],
-    "directives": []
+    directives: []
   }
 } as unknown as IntrospectionQuery;

@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Character } from '@/generated/graphql';
 
-
 export interface CharacterState {
   characterData: Character | null;
   searchText: string;
@@ -13,15 +12,15 @@ export interface CharacterState {
 // define initial state
 const initialState: CharacterState = {
   characterData: null,
-  searchText: "",
+  searchText: '',
   searchPage: 1,
   generatingInfoFromOpenAi: false,
-  generatedCharacterInfo: "",
+  generatedCharacterInfo: ''
 };
 
 // create slice
 export const characterSlice = createSlice({
-  name: "character",
+  name: 'character',
   initialState,
   reducers: {
     setCharacterData: (state, action: PayloadAction<Character>) => {
@@ -39,7 +38,7 @@ export const characterSlice = createSlice({
     setGeneratedCharacterInfo: (state, action: PayloadAction<string>) => {
       state.generatedCharacterInfo = action.payload;
     }
-  },
+  }
 });
 
 // export action

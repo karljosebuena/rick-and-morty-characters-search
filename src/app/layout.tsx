@@ -5,7 +5,7 @@ import Providers from './providers';
 
 export const metadata = {
   title: 'Rick and Morty Characters Search App',
-  description: 'Rick and Morty Characters Search App built with Next.js + Material UI v5',
+  description: 'Rick and Morty Characters Search App built with Next.js + Material UI v5'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

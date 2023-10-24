@@ -16,9 +16,10 @@ import Link from 'next/link';
 import { SignOutButton } from '@clerk/nextjs';
 
 const pages = [{ label: 'Docs', link: 'https://rickandmortyapi.com/documentation' }];
-interface ResponsiveAppBarProps {
+
+type ResponsiveAppBarProps = {
   name?: string;
-  profileImgUrl?: string
+  profileImgUrl?: string;
 }
 
 function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
@@ -42,10 +43,10 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
 
   const handleLogout = async () => {
     await fetch('/api/auth/logout', {
-      method: 'POST',
+      method: 'POST'
     });
     window.location.href = '/';
-  }
+  };
 
   return (
     <AppBar position="static">
@@ -67,22 +68,25 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left',
+                horizontal: 'left'
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left',
+                horizontal: 'left'
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
-              {pages.map((page) => (
+              {pages.map(page => (
                 <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                  <Link target="_blank" href={page.link} rel="noopener noreferrer"
+                  <Link
+                    target="_blank"
+                    href={page.link}
+                    rel="noopener noreferrer"
                     style={{
                       color: 'white',
                       textDecoration: 'none',
@@ -91,7 +95,7 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
                       fontWeight: 500,
                       letterSpacing: '.1rem',
                       fontFamily: 'monospace',
-                      textTransform: 'uppercase',
+                      textTransform: 'uppercase'
                     }}
                   >
                     <Typography textAlign="center">{page.label}</Typography>
@@ -101,8 +105,12 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link target="_blank" href={page.link} rel="noopener noreferrer"
+            {pages.map(page => (
+              <Link
+                target="_blank"
+                href={page.link}
+                rel="noopener noreferrer"
+                key={page.label}
                 style={{
                   color: 'white',
                   textDecoration: 'none',
@@ -111,15 +119,16 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
                   fontWeight: 500,
                   letterSpacing: '.1rem',
                   fontFamily: 'monospace',
-                  textTransform: 'uppercase',
-                }} >
+                  textTransform: 'uppercase'
+                }}
+              >
                 <Typography textAlign="center">{page.label}</Typography>
               </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Account Settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src={profileImgUrl} />
               </IconButton>
@@ -130,12 +139,12 @@ function ResponsiveAppBar({ name, profileImgUrl }: ResponsiveAppBarProps) {
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}

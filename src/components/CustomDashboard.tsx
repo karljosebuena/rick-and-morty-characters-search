@@ -1,17 +1,19 @@
-'use client'
+'use client';
 
-import CustomPagination from '@/components/CustomPagination'
-import MediaCard from '@/components/MediaCard'
-import SearchBar from '@/components/SearchBar'
-import { Character, GetCharactersQuery, useGetCharactersQuery } from '@/generated/graphql'
-import { Box } from '@mui/material'
-import { useSearchParams } from 'next/navigation'
-import React, { useState } from 'react'
-import { useSelector } from "react-redux";
-import { searchTextSelector } from '@/redux/characterSlice'
-import { useRouter } from 'next/navigation'
-import SimpleBackdrop from '@/components/Backdrop'
-import BasicModal from '@/components/BasicModal'
+import { Box } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+
+import { Character, GetCharactersQuery, useGetCharactersQuery } from '@/generated/graphql';
+
+import CustomPagination from '@/components/CustomPagination';
+import MediaCard from '@/components/MediaCard';
+import SearchBar from '@/components/SearchBar';
+import { searchTextSelector } from '@/redux/characterSlice';
+import SimpleBackdrop from '@/components/Backdrop';
+import BasicModal from '@/components/BasicModal';
 
 interface GetCharactersQueryWithInfo extends GetCharactersQuery {
   info: {
@@ -49,9 +51,9 @@ const CustomDashboard = () => {
   const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
     router.push(`dashboard?page=${value}`, undefined);
     setCurrentPage(value);
-  }
+  };
 
-  if (fetching) return <SimpleBackdrop open={fetching} />
+  if (fetching) return <SimpleBackdrop open={fetching} />;
   if (error) return <div style={{ padding: '2rem 1rem' }}>Oh no... {(error as Error).message}</div>;
 
   return (
@@ -77,7 +79,7 @@ const CustomDashboard = () => {
           justifyItems: 'stretch',
           width: '100%',
           height: '100%',
-          padding: '1rem',
+          padding: '1rem'
         }}
       >
         {data?.characters?.results?.map((character, index) => (
@@ -87,15 +89,11 @@ const CustomDashboard = () => {
         ))}
       </div>
 
-      <CustomPagination
-        count={data?.characters?.info?.pages ?? 1}
-        page={currentPage}
-        handleChange={handlePaginationChange}
-      />
+      <CustomPagination count={data?.characters?.info?.pages ?? 1} page={currentPage} handleChange={handlePaginationChange} />
 
       <BasicModal />
     </Box>
-  )
-}
+  );
+};
 
 export default CustomDashboard;

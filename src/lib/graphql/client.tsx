@@ -1,13 +1,12 @@
 import { createClient, cacheExchange, fetchExchange, Client, Provider, ssrExchange } from 'urql';
 
-const url = process.env.GRAPHQL_URL ?? 'https://rickandmortyapi.com/graphql/';
 const isServerSide = typeof window === 'undefined';
 
 export const ssrCache = ssrExchange({ isClient: !isServerSide });
 export const client = createClient({
-  url,
+  url: '/api/graphql',
   requestPolicy: 'cache-first',
-  exchanges: [cacheExchange, fetchExchange, ssrCache, fetchExchange],
+  exchanges: [cacheExchange, fetchExchange, ssrCache]
 });
 
 interface GraphqlProviderProps {

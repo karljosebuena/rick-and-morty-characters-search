@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import Typewriter from "typewriter-effect";
+import Typewriter from 'typewriter-effect';
 
 const TypewriterTitle = () => {
   return (
     <Typewriter
       options={{
-        loop: true,
+        loop: true
       }}
-      onInit={(typewriter) => {
+      onInit={typewriter => {
         typewriter
-          .typeString("💖 Your favorite Rick and Morty Characters")
+          .typeString('💖 Your favorite Rick and Morty Characters')
           .pauseFor(1000)
           .deleteAll()
-          .typeString("🔬 Can be easily searched")
+          .typeString('🔬 Can be easily searched')
           .start();
       }}
     />
