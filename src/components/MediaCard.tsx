@@ -57,7 +57,6 @@ export default function MediaCard({ character }: MediaCardProps) {
         console.log(error);
       },
       onSettled: () => {
-        console.log("done");
         setGeneratingCharacterInfo(false);
         dispatch(setGeneratingInfoFromOpenAi(true));
       }

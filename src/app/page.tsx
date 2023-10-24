@@ -17,7 +17,6 @@ export default function HomePage() {
       <h2 style={{ color: '#a8a8a8' }}>
         <TypewriterTitle />
       </h2>
-      {/* <Spacer /> */}
       <Link href="/dashboard">
         <Button sx={{ background: 'green', color: 'white' }}>
           Get Started
