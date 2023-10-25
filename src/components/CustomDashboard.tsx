@@ -30,10 +30,10 @@ const CustomDashboard = () => {
   const page = parseInt(searchParams.get('page') ?? '1', 10);
   const [currentPage, setCurrentPage] = useState(page);
 
-  // TODO: Fix problem with search when result is 1 page only and current page is > 1
   const searchText = useSelector(searchTextSelector);
   useEffect(() => {
     if (searchText) {
+      setCurrentPage(1);
       router.push(`dashboard?page=${1}`, undefined);
     }
   }, [router, searchText])
@@ -71,8 +71,7 @@ const CustomDashboard = () => {
       }}
     >
       <SearchBar />
-
-      {/* Main Body */}
+      <CustomPagination count={data?.characters?.info?.pages ?? 1} page={currentPage} handleChange={handlePaginationChange} />
       <div
         style={{
           display: 'grid',
@@ -90,9 +89,7 @@ const CustomDashboard = () => {
           </div>
         ))}
       </div>
-
       <CustomPagination count={data?.characters?.info?.pages ?? 1} page={currentPage} handleChange={handlePaginationChange} />
-
       <BasicModal />
     </Box>
   );
