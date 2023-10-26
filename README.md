@@ -129,9 +129,8 @@ For more details on deploying github project to vercel, check it here [Github-Ve
 
 ## 🖊️ Todo <a name = "todo"></a>
 
-1. Fix problem with search when result is 1 page only and current page is > 1
-2. Add more tests
-3. Apply SSR (Server Side Rendering)
+1. Add more tests
+2. Apply SSR (Server Side Rendering)
 
 For more details on deploying github project to vercel, check it here [Github-Vercel Deployment Guide](https://vercel.com/docs/deployments/git#deploying-a-git-repository)
 
